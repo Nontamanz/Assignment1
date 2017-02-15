@@ -1,0 +1,42 @@
+<head>
+<h1>Assignment1</h1>
+</head>
+<body>
+<p>Username<input type="text" id="username" size="20"></p>
+<button type="button" onclick="myFunction()">OK</button>
+<p>ชื่อ : <h id='name'></h></p>
+<p>อีเมลล์ : <h id='mail'></h></p>
+<p>ที่อยู่ : <h id='add'></h><p>
+<p>เบอร์ : <hs id='tel'></hs></p>
+<p>เว็บไซค์ : <h id='web'></h></p>
+<p>บริษัทที่ทำงาน : <h id='com'></h></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+function myFunction() {
+var root = 'https://jsonplaceholder.typicode.com';
+$.ajax({
+url: root + '/users',
+method: 'GET'
+}).then(function (data) {
+//if(data[0].username == username){
+// document.getElementById('name').innerHTML = data[0].username;
+//}
+var Username = document.getElementById("username").value;
+for(i = 0;i<=data.length;i++){
+if (Username == data[i].username) {
+document.getElementById('name').innerHTML = data[i].name;
+document.getElementById('mail').innerHTML = data[i].email;
+document.getElementById('add').innerHTML = data[i].address.street + " " + data[i].address.suit + " " + data[i].address.city + " " + data[i].address.zipcode ;
+document.getElementById('tel').innerHTML = data[i].phone;
+document.getElementById('web').innerHTML = data[i].website;
+document.getElementById('com').innerHTML = data[i].company.name;
+}
+
+}
+
+});
+}
+
+</script>
+</body>
