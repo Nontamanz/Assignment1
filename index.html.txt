@@ -1,5 +1,0 @@
-<head>
-	<h1>Assignment1</h1>
-</head>
-<body>
-</body>
